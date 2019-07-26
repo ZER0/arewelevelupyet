@@ -41,7 +41,7 @@
 
       @media (orientation: landscape) {
         body h1 {
-          font-size: 50vh;
+          font-size: 45vh;
         }
         .flip-clock__slot {
           font-size: 2vh;
@@ -53,7 +53,7 @@
 
       @media (orientation: portrait) {
         body h1 {
-          font-size: 50vw;
+          font-size: 45vw;
         }
         .flip-clock__slot {
           font-size: 2vw;
@@ -292,8 +292,17 @@
       setTimeout(updateClock, 500);
     }
 
-    var deadline = new Date(2019, 6, 29);
-    var c = new Clock(deadline);
-    document.body.appendChild(c.el);
+    function yes() {
+      document.querySelector("h1").textContent = "YES";
+    }
+
+    var deadline = new Date(2019, 6, 29, 16);
+
+    if (new Date() >= deadline) {
+      yes();
+    } else {
+      var c = new Clock(deadline, yes);
+      document.body.appendChild(c.el);
+    }
   </script>
 </html>
